@@ -164,7 +164,7 @@ export default function Installationform({ onLogout, user }) {
   };
 
   const GAS_URL =
-    "https://script.google.com/macros/s/AKfycbwUQRPjBBDCh4RUJQLJA5kQPUkcAI_klB__5xWyJJzjqdd57h0OtnSAkq7csO8mERRR9w/exec";
+    "https://script.google.com/macros/s/AKfycbxmEJ_VandjgE1yJKbc4e_1R323p-SW-votQzSSAk20V5_l7eTfvMEfQNhu_oDt-qwm/exec";
 
   const styl = `.ant-modal-root .ant-modal {
     width: var(--ant-modal-xs-width);
@@ -5471,11 +5471,12 @@ export default function Installationform({ onLogout, user }) {
                   <Input
                     placeholder="DD-MM-YYYY"
                     value={editForm.getFieldValue("dateOfInstallation") || ""}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      const formatted = formatDDMMYYYY(e.target.value);
                       editForm.setFieldsValue({
-                        dateOfInstallation: e.target.value,
-                      })
-                    }
+                        dateOfInstallation: formatted,
+                      });
+                    }}
                   />
                 </Form.Item>
               </div>
@@ -5676,11 +5677,13 @@ export default function Installationform({ onLogout, user }) {
                   <Input
                     placeholder="DD-MM-YYYY"
                     value={editForm.getFieldValue("dateOfCommissioning") || ""}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      const formatted = formatDDMMYYYY(e.target.value);
+
                       editForm.setFieldsValue({
-                        dateOfCommissioning: e.target.value,
-                      })
-                    }
+                        dateOfCommissioning: formatted,
+                      });
+                    }}
                   />
                 </Form.Item>
 
